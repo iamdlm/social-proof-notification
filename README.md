@@ -19,7 +19,7 @@ A lightweight, framework-agnostic JavaScript library for displaying social proof
 ### CDN (Recommended for quick start)
 
 ```html
-<script src="https://cdn.jsdelivr.net/gh/yourusername/social-proof-notification/social-proof-notification.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/iamdlm/social-proof-notification/social-proof-notification.min.js"></script>
 ```
 
 ### Download
