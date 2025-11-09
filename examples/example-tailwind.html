@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SocialProofNotification - Tailwind Example</title>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50">
+  <div class="min-h-screen py-12 px-4">
+    <div class="max-w-4xl mx-auto">
+      
+      <!-- Header -->
+      <div class="bg-white rounded-lg shadow-sm p-8 mb-6">
+        <h1 class="text-3xl font-bold text-gray-900 mb-2">⚡ Tailwind CSS Integration</h1>
+        <p class="text-gray-600">SocialProofNotification.js seamlessly integrates with Tailwind's utility classes</p>
+      </div>
+
+      <!-- Setup Section -->
+      <div class="bg-white rounded-lg shadow-sm p-8 mb-6">
+        <h2 class="text-xl font-semibold text-gray-900 mb-4">Quick Setup</h2>
+        <div class="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto">
+          <pre class="text-sm"><code>&lt;!-- Include Tailwind CSS -->
+&lt;script src="https://cdn.tailwindcss.com">&lt;/script>
+
+&lt;!-- Include SocialProofNotification -->
+&lt;script src="../social-proof-notification.min.js">&lt;/script>
+
+&lt;script>
+  const notifier = SocialProofNotification.create({
+    theme: 'tailwind',  // ← Set Tailwind theme
+    position: 'bottom-right',
+    autoClose: true,
+    autoCloseTimeout: 8000
+  });
+  
+  notifier.init();
+&lt;/script></code></pre>
+        </div>
+      </div>
+
+      <!-- Features -->
+      <div class="bg-white rounded-lg shadow-sm p-8 mb-6">
+        <h2 class="text-xl font-semibold text-gray-900 mb-4">Features</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="flex items-start space-x-3 p-4 bg-green-50 rounded-lg">
+            <svg class="w-6 h-6 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+            </svg>
+            <div>
+              <h3 class="font-medium text-gray-900">Pure Utility Classes</h3>
+              <p class="text-sm text-gray-600">Uses Tailwind's utility-first approach</p>
+            </div>
+          </div>
+          
+          <div class="flex items-start space-x-3 p-4 bg-blue-50 rounded-lg">
+            <svg class="w-6 h-6 text-blue-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+            </svg>
+            <div>
+              <h3 class="font-medium text-gray-900">Fully Responsive</h3>
+              <p class="text-sm text-gray-600">Adapts to all screen sizes</p>
+            </div>
+          </div>
+          
+          <div class="flex items-start space-x-3 p-4 bg-purple-50 rounded-lg">
+            <svg class="w-6 h-6 text-purple-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+            </svg>
+            <div>
+              <h3 class="font-medium text-gray-900">No Custom CSS</h3>
+              <p class="text-sm text-gray-600">Zero additional styling needed</p>
+            </div>
+          </div>
+          
+          <div class="flex items-start space-x-3 p-4 bg-yellow-50 rounded-lg">
+            <svg class="w-6 h-6 text-yellow-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+            </svg>
+            <div>
+              <h3 class="font-medium text-gray-900">Dark Mode Ready</h3>
+              <p class="text-sm text-gray-600">Easy to customize colors</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Position Demos -->
+      <div class="bg-white rounded-lg shadow-sm p-8 mb-6">
+        <h2 class="text-xl font-semibold text-gray-900 mb-4">Position Examples</h2>
+        <div class="flex flex-wrap gap-3">
+          <button 
+            onclick="showBottomRight()"
+            class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium">
+            Bottom Right →
+          </button>
+          <button 
+            onclick="showBottomLeft()"
+            class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium">
+            ← Bottom Left
+          </button>
+          <button 
+            onclick="showTopRight()"
+            class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium">
+            Top Right ↗
+          </button>
+          <button 
+            onclick="showTopCenter()"
+            class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium">
+            ↑ Top Center
+          </button>
+        </div>
+      </div>
+
+      <!-- Icon Variations -->
+      <div class="bg-white rounded-lg shadow-sm p-8 mb-6">
+        <h2 class="text-xl font-semibold text-gray-900 mb-4">Icon Types</h2>
+        <div class="flex flex-wrap gap-3">
+          <button 
+            onclick="showCheckmark()"
+            class="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors font-medium">
+            ✓ Checkmark
+          </button>
+          <button 
+            onclick="showFire()"
+            class="px-4 py-2 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition-colors font-medium">
+            🔥 Fire
+          </button>
+          <button 
+            onclick="showStar()"
+            class="px-4 py-2 bg-yellow-600 text-white rounded-lg hover:bg-yellow-700 transition-colors font-medium">
+            ⭐ Star
+          </button>
+        </div>
+      </div>
+
+      <!-- Custom Data -->
+      <div class="bg-white rounded-lg shadow-sm p-8 mb-6">
+        <h2 class="text-xl font-semibold text-gray-900 mb-4">Custom Data Source</h2>
+        <div class="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto mb-4">
+          <pre class="text-sm"><code>const notifier = SocialProofNotification.create({
+  theme: 'tailwind',
+  dataSource: 'local',
+  localData: [
+    {
+      message: '🎉 20 people joined today!',
+      timestamp: 'Just now'
+    },
+    {
+      message: 'Mike from Seattle just purchased',
+      timestamp: '3 minutes ago'
+    }
+  ]
+});
+
+notifier.init();</code></pre>
+        </div>
+        <button 
+          onclick="showCustomData()"
+          class="px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors font-medium">
+          Show Custom Data
+        </button>
+      </div>
+
+      <!-- API Integration -->
+      <div class="bg-white rounded-lg shadow-sm p-8">
+        <h2 class="text-xl font-semibold text-gray-900 mb-4">Real-Time API Integration</h2>
+        <p class="text-gray-600 mb-4">Connect your backend for live notifications</p>
+        <div class="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto">
+          <pre class="text-sm"><code>// API Response Format:
+// {
+//   "message": "John just purchased the premium plan!",
+//   "timestamp": "2 minutes ago"
+// }
+
+const notifier = SocialProofNotification.create({
+  theme: 'tailwind',
+  dataSource: 'api',
+  apiUrl: 'https://api.yoursite.com/social-proof',
+  initialDelay: 5000,
+  autoCloseTimeout: 10000,
+  minTimeBetween: 6  // Hours between notifications
+});
+
+notifier.init();</code></pre>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="../social-proof-notification.js"></script>
+  <script>
+    let currentNotifier = null;
+
+    function cleanup() {
+      if (currentNotifier) {
+        currentNotifier.destroy();
+      }
+    }
+
+    function showBottomRight() {
+      cleanup();
+      currentNotifier = SocialProofNotification.create({
+        theme: 'tailwind',
+        position: 'bottom-right',
+        autoClose: true,
+        autoCloseTimeout: 8000,
+        initialDelay: 100,
+        saveToStorage: false
+      });
+      currentNotifier.init();
+    }
+
+    function showBottomLeft() {
+      cleanup();
+      currentNotifier = SocialProofNotification.create({
+        theme: 'tailwind',
+        position: 'bottom-left',
+        autoClose: true,
+        autoCloseTimeout: 8000,
+        initialDelay: 100,
+        saveToStorage: false
+      });
+      currentNotifier.init();
+    }
+
+    function showTopRight() {
+      cleanup();
+      currentNotifier = SocialProofNotification.create({
+        theme: 'tailwind',
+        position: 'top-right',
+        autoClose: true,
+        autoCloseTimeout: 8000,
+        initialDelay: 100,
+        saveToStorage: false
+      });
+      currentNotifier.init();
+    }
+
+    function showTopCenter() {
+      cleanup();
+      currentNotifier = SocialProofNotification.create({
+        theme: 'tailwind',
+        position: 'top-center',
+        autoClose: true,
+        autoCloseTimeout: 8000,
+        initialDelay: 100,
+        saveToStorage: false
+      });
+      currentNotifier.init();
+    }
+
+    function showCheckmark() {
+      cleanup();
+      currentNotifier = SocialProofNotification.create({
+        theme: 'tailwind',
+        position: 'bottom-right',
+        iconType: 'checkmark',
+        autoClose: true,
+        autoCloseTimeout: 8000,
+        initialDelay: 100,
+        saveToStorage: false
+      });
+      currentNotifier.init();
+    }
+
+    function showFire() {
+      cleanup();
+      currentNotifier = SocialProofNotification.create({
+        theme: 'tailwind',
+        position: 'bottom-right',
+        iconType: 'fire',
+        autoClose: true,
+        autoCloseTimeout: 8000,
+        initialDelay: 100,
+        saveToStorage: false
+      });
+      currentNotifier.init();
+    }
+
+    function showStar() {
+      cleanup();
+      currentNotifier = SocialProofNotification.create({
+        theme: 'tailwind',
+        position: 'bottom-right',
+        iconType: 'star',
+        autoClose: true,
+        autoCloseTimeout: 8000,
+        initialDelay: 100,
+        saveToStorage: false
+      });
+      currentNotifier.init();
+    }
+
+    function showCustomData() {
+      cleanup();
+      currentNotifier = SocialProofNotification.create({
+        theme: 'tailwind',
+        position: 'bottom-right',
+        dataSource: 'local',
+        localData: [
+          {
+            message: '🎉 20 people joined today!',
+            timestamp: 'Just now'
+          },
+          {
+            message: 'Mike from Seattle just purchased',
+            timestamp: '3 minutes ago'
+          }
+        ],
+        autoClose: true,
+        autoCloseTimeout: 8000,
+        initialDelay: 100,
+        saveToStorage: false
+      });
+      currentNotifier.init();
+    }
+
+    // Show demo on load
+    setTimeout(() => {
+      showBottomRight();
+    }, 2000);
+  </script>
+</body>
+</html>

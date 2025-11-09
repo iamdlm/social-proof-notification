@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SocialProofNotification - Vanilla Example</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 20px;
+      background: #f9fafb;
+    }
+    .demo-section {
+      background: white;
+      border-radius: 8px;
+      padding: 30px;
+      margin-bottom: 20px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    h1 {
+      color: #111827;
+      margin-bottom: 10px;
+    }
+    h2 {
+      color: #374151;
+      margin-top: 30px;
+      margin-bottom: 15px;
+    }
+    .subtitle {
+      color: #6b7280;
+      margin-bottom: 30px;
+    }
+    button {
+      background: #3b82f6;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+      margin: 5px;
+      transition: background 0.2s;
+    }
+    button:hover {
+      background: #2563eb;
+    }
+    .code-block {
+      background: #1f2937;
+      color: #f9fafb;
+      padding: 20px;
+      border-radius: 6px;
+      overflow-x: auto;
+      margin: 15px 0;
+      font-family: 'Monaco', 'Menlo', 'Courier New', monospace;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 15px;
+      margin: 20px 0;
+    }
+    .feature-item {
+      padding: 15px;
+      background: #f3f4f6;
+      border-radius: 6px;
+    }
+    .feature-item strong {
+      color: #111827;
+      display: block;
+      margin-bottom: 5px;
+    }
+    .feature-item span {
+      color: #6b7280;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="demo-section">
+    <h1>🔔 SocialProofNotification.js</h1>
+    <p class="subtitle">A lightweight, framework-agnostic library for social proof notifications</p>
+    
+    <h2>Quick Start (Default Theme)</h2>
+    <div class="code-block">
+&lt;script src="../social-proof-notification.min.js">&lt;/script>
+&lt;script>
+  const notifier = SocialProofNotification.create({
+    position: 'bottom-right',
+    autoClose: true,
+    autoCloseTimeout: 8000,
+    initialDelay: 3000,
+    dataSource: 'local',
+    theme: 'default'
+  });
+  
+  notifier.init();
+&lt;/script>
+    </div>
+
+    <h2>Configuration Options</h2>
+    <div class="feature-grid">
+      <div class="feature-item">
+        <strong>Position</strong>
+        <span>top-left, top-right, top-center, bottom-left, bottom-right, bottom-center</span>
+      </div>
+      <div class="feature-item">
+        <strong>Data Source</strong>
+        <span>'local' or 'api'</span>
+      </div>
+      <div class="feature-item">
+        <strong>Theme</strong>
+        <span>'default', 'bootstrap', 'tailwind'</span>
+      </div>
+      <div class="feature-item">
+        <strong>Animation</strong>
+        <span>'slide', 'fade', 'bounce', 'none'</span>
+      </div>
+      <div class="feature-item">
+        <strong>Icon Type</strong>
+        <span>'checkmark', 'fire', 'star'</span>
+      </div>
+      <div class="feature-item">
+        <strong>Auto Close</strong>
+        <span>true/false with timeout in ms</span>
+      </div>
+    </div>
+
+    <h2>Try Different Configurations</h2>
+    <div style="margin: 20px 0;">
+      <button onclick="showDefault()">Default Theme</button>
+      <button onclick="showBottomLeft()">Bottom Left</button>
+      <button onclick="showTopCenter()">Top Center</button>
+      <button onclick="showWithFade()">Fade Animation</button>
+      <button onclick="showWithBounce()">Bounce Animation</button>
+      <button onclick="showFireIcon()">Fire Icon</button>
+      <button onclick="showStarIcon()">Star Icon</button>
+      <button onclick="showNoPause()">No Auto-Close</button>
+    </div>
+  </div>
+
+  <div class="demo-section">
+    <h2>Using with Local Data</h2>
+    <div class="code-block">
+const notifier = SocialProofNotification.create({
+  dataSource: 'local',
+  localData: [
+    {
+      message: '5 people bought this in the last hour!',
+      timestamp: '2 minutes ago'
+    },
+    {
+      message: 'John from New York just signed up!',
+      timestamp: 'Just now'
+    },
+    {
+      message: '10 people are viewing this right now',
+      timestamp: '30 seconds ago'
+    }
+  ]
+});
+
+notifier.init();
+    </div>
+    <button onclick="showLocalData()">Show with Custom Data</button>
+  </div>
+
+  <div class="demo-section">
+    <h2>Using with API</h2>
+    <div class="code-block">
+// Your API should return:
+// { "message": "Someone just bought this!", "timestamp": "Just now" }
+
+const notifier = SocialProofNotification.create({
+  dataSource: 'api',
+  apiUrl: 'https://your-api.com/notifications',
+  initialDelay: 5000,
+  autoCloseTimeout: 10000
+});
+
+notifier.init();
+    </div>
+    <button onclick="showAPIExample()">Simulate API Data</button>
+  </div>
+
+  <div class="demo-section">
+    <h2>Advanced: Custom Message Format</h2>
+    <div class="code-block">
+const notifier = SocialProofNotification.create({
+  messageFormat: '🔥 {count} customers {action} {timeframe}',
+  iconType: 'fire'
+});
+
+notifier.init();
+    </div>
+    <button onclick="showCustomFormat()">Show Custom Format</button>
+  </div>
+
+  <script src="../social-proof-notification.js"></script>
+  <script>
+    let currentNotifier = null;
+
+    function cleanupPrevious() {
+      if (currentNotifier) {
+        currentNotifier.destroy();
+      }
+    }
+
+    function showDefault() {
+      cleanupPrevious();
+      currentNotifier = SocialProofNotification.create({
+        position: 'bottom-right',
+        autoClose: true,
+        autoCloseTimeout: 8000,
+        initialDelay: 100,
+        saveToStorage: false,
+        theme: 'default'
+      });
+      currentNotifier.init();
+    }
+
+    function showBottomLeft() {
+      cleanupPrevious();
+      currentNotifier = SocialProofNotification.create({
+        position: 'bottom-left',
+        autoClose: true,
+        autoCloseTimeout: 8000,
+        initialDelay: 100,
+        saveToStorage: false
+      });
+      currentNotifier.init();
+    }
+
+    function showTopCenter() {
+      cleanupPrevious();
+      currentNotifier = SocialProofNotification.create({
+        position: 'top-center',
+        autoClose: true,
+        autoCloseTimeout: 8000,
+        initialDelay: 100,
+        saveToStorage: false
+      });
+      currentNotifier.init();
+    }
+
+    function showWithFade() {
+      cleanupPrevious();
+      currentNotifier = SocialProofNotification.create({
+        position: 'bottom-right',
+        animation: 'fade',
+        autoClose: true,
+        autoCloseTimeout: 8000,
+        initialDelay: 100,
+        saveToStorage: false
+      });
+      currentNotifier.init();
+    }
+
+    function showWithBounce() {
+      cleanupPrevious();
+      currentNotifier = SocialProofNotification.create({
+        position: 'bottom-right',
+        animation: 'bounce',
+        autoClose: true,
+        autoCloseTimeout: 8000,
+        initialDelay: 100,
+        saveToStorage: false
+      });
+      currentNotifier.init();
+    }
+
+    function showFireIcon() {
+      cleanupPrevious();
+      currentNotifier = SocialProofNotification.create({
+        position: 'bottom-right',
+        iconType: 'fire',
+        autoClose: true,
+        autoCloseTimeout: 8000,
+        initialDelay: 100,
+        saveToStorage: false
+      });
+      currentNotifier.init();
+    }
+
+    function showStarIcon() {
+      cleanupPrevious();
+      currentNotifier = SocialProofNotification.create({
+        position: 'bottom-right',
+        iconType: 'star',
+        autoClose: true,
+        autoCloseTimeout: 8000,
+        initialDelay: 100,
+        saveToStorage: false
+      });
+      currentNotifier.init();
+    }
+
+    function showNoPause() {
+      cleanupPrevious();
+      currentNotifier = SocialProofNotification.create({
+        position: 'bottom-right',
+        autoClose: false,
+        initialDelay: 100,
+        saveToStorage: false
+      });
+      currentNotifier.init();
+    }
+
+    function showLocalData() {
+      cleanupPrevious();
+      currentNotifier = SocialProofNotification.create({
+        position: 'bottom-right',
+        dataSource: 'local',
+        localData: [
+          {
+            message: '5 people bought this in the last hour!',
+            timestamp: '2 minutes ago'
+          },
+          {
+            message: 'John from New York just signed up!',
+            timestamp: 'Just now'
+          },
+          {
+            message: '10 people are viewing this right now',
+            timestamp: '30 seconds ago'
+          }
+        ],
+        autoClose: true,
+        autoCloseTimeout: 8000,
+        initialDelay: 100,
+        saveToStorage: false
+      });
+      currentNotifier.init();
+    }
+
+    function showAPIExample() {
+      cleanupPrevious();
+      // Simulating API response
+      currentNotifier = SocialProofNotification.create({
+        position: 'bottom-right',
+        dataSource: 'local',
+        localData: [
+          {
+            message: 'API: Someone from London just purchased!',
+            timestamp: 'Just now'
+          }
+        ],
+        autoClose: true,
+        autoCloseTimeout: 8000,
+        initialDelay: 100,
+        saveToStorage: false
+      });
+      currentNotifier.init();
+    }
+
+    function showCustomFormat() {
+      cleanupPrevious();
+      currentNotifier = SocialProofNotification.create({
+        position: 'bottom-right',
+        messageFormat: '🔥 {count} customers {action} {timeframe}',
+        iconType: 'fire',
+        autoClose: true,
+        autoCloseTimeout: 8000,
+        initialDelay: 100,
+        saveToStorage: false
+      });
+      currentNotifier.init();
+    }
+
+    // Auto-show on page load
+    setTimeout(() => {
+      showDefault();
+    }, 2000);
+  </script>
+</body>
+</html>
